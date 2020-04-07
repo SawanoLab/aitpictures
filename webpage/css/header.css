@@ -1,0 +1,85 @@
+/* リセット */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+#header{
+	background: #FFFFFF;
+}
+.fixed {
+    position: fixed;
+    top: -15px;
+    width: 100%;
+    z-index: 10000;
+}
+
+#itemMenu{
+  list-style: none;
+  padding-left:10px;
+  font-weight: bold;
+  line-height: 1;
+  float: center;
+  font-family:sans-serif;
+
+}
+#itemMenu li{
+  list-style: none;
+  padding-left:0px;
+  margin-top: 10px;
+  float: left;
+  width: 120px;
+}
+#itemMenu li a{
+  font-size: 12px;
+  color: #666;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.5em 0;
+  display: block;
+}
+#itemMenu li a{
+  border-left: 1px solid #AAA;
+}
+#itemMenu li:last-child a{
+  border-right: 1px solid #AAA;
+}
+#itemMenu li a:hover {
+	background-color:#000066; 	/*リンクにマウスが乗ったら背景色を変更する*/
+}
+
+#LoginTop{
+  list-style: none;
+  padding-right:10px;
+  font-weight: bold;
+  line-height: 1;
+  float: center;
+  font-family:sans-serif;
+}
+#LoginTop li{
+  list-style: none;
+  margin-top: 10px;
+  padding-left:10px;
+  float: right;
+  width: 80px;
+}
+#LoginTop li a{
+  font-size: 12px;
+  color: #666;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.5em 0;
+  display: block;
+  border-top: 1px solid #AAA;
+  border-bottom: 1px solid #AAA;
+}
+#LoginTop li a{
+  border-left: 1px solid #AAA;
+  border-right: 1px solid #AAA;
+  border-radius: 6px 6px 6px 6px;
+}
+#LoginTop li a:hover {
+	background-color:#000066; 	/*リンクにマウスが乗ったら背景色を変更する*/
+}
+h1 a:hover{
+	color:#0000BB; 	/*リンクにマウスが乗ったら背景色を変更する*/
+}

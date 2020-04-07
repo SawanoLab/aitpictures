@@ -1,0 +1,80 @@
+body,p,form,input{
+    margin:0;
+}
+#logout{
+    width:400px;
+    margin:30px auto;
+    padding: 20px;
+    border: 1px solid #555;
+}
+
+.logout-title{
+    text-align: center;
+}
+
+.logout-check{
+    text-align: center;
+    padding:10px;
+}
+
+.re-login{
+    font-size:14px;
+    text-align: center;
+}
+
+a{
+    text-align: right;
+    padding-bottom: 10px;
+}
+
+/* font */
+#logout p{
+    color:#077685;
+    font-weight: bold;
+}
+
+#logout .logout-title{
+    font-family: Arial;
+    font-size: 30px;
+    color: #4eb4c2;
+}
+
+.logout-check{
+    font-family: Arial;
+    font-size: 30px;
+}
+
+/* skin */
+
+#logout{
+    box-shadow: 0px 1px 10px #488a9e;
+    border: solid #4eb4c2 1px;
+    background: #fafafa;
+}
+
+#logout .logout-title{
+    padding-bottom: 6px;
+    border-bottom: 2px solid #4eb4c2;
+    margin-bottom: 20px;
+}
+
+.logout-check{
+    margin: 30px;
+}
+
+a input{
+    font-family: Arial;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    background: #4eb4c2;
+    box-shadow: 0px 8px 6px #e3e3e3;
+    border: solid #f5fdff 4px;
+
+}
+
+a input:hover{
+    background: #37a4bf;
+}
