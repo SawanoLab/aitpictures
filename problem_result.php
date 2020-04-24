@@ -9,23 +9,27 @@
  /*セッションとは、コンピュータのサーバー側に一時的にデータを保存する仕組み*/
 
     //cppファイルを新規作成 file.cppは解答したコードを受け取ってベタ打ちで記入する
-    $text = $_POST['text']; /*入力したテキストを変数textに入れる*/
-    touch('file.cpp'); /*ファイルの最終アクセス時刻および最終更新日をセットする*/
-    $cpp = fopen('file.cpp', 'w'); /*新しいテキストファイルを作って書き込む*/
-    fwrite($cpp, $text); /*入力したテキストをfile.cppに書き込む*/
-    fclose($cpp);
+
+    //      ！！！！下は正解コード書き直しのため終わったらコメントアウト外す！！！！
+    // $text = $_POST['text']; /*入力したテキストを変数textに入れる*/
+    // touch('file.cpp'); /*ファイルの最終アクセス時刻および最終更新日をセットする*/
+    // $cpp = fopen('file.cpp', 'w'); /*新しいテキストファイルを作って書き込む*/
+    // fwrite($cpp, $text); /*入力したテキストをfile.cppに書き込む*/
+    // fclose($cpp);
 
     $a; //a.outの標準出力を保存
         //画像の枚数（複数対応させるため）?　だから文字列の配列（から個数が目視でわかる）
         //提出コードのコンパイル後の画像と、正解画像のパス名が入る
-    $b; //0:提出コードのコンパイルが成功//0以外:提出コードのコンパイルが失敗
+    $b = 0; //0:提出コードのコンパイルが成功//0以外:提出コードのコンパイルが失敗
     $c; //0:evaluation.cppのコンパイルが成功//0以外:evaluation.cppのコンパイルが失敗
     $ev; //0:提出コードが正解//0以外:提出コードが不正解
     $_SESSION['errorFlag'] = 0; 0; //0:提出コードがコンパイル成功//0以外:提出コードがコンパイル失敗
    /* SESSION[‘username’] を取り出してあげれば、中身を取り出すことができます。*/
 
     //提出コードをコンパイル
-    exec('g++ -std=c++11 file.cpp IPPJ.cpp `/usr/local/bin/pkg-config --libs --cflags opencv4`', $a, $b); //execはターミナル、前文コンパイル文、aとbは出力結果 ''は文字列であってコンパイルの区切りではない、コンパイルの区切りは,!
+
+    //exec('g++ -std=c++11 file.cpp IPPJ.cpp `/usr/local/bin/pkg-config --libs --cflags opencv4`', $a, $b); //execはターミナル、前文コンパイル文、aとbは出力結果 ''は文字列であってコンパイルの区切りではない、コンパイルの区切りは,!
+
     /*string exec ( string $command [, array &$output [, int &$return_var ]] )
     引数
     $command    実行するコマンドを指定します。
@@ -41,23 +45,23 @@
     //提出コードを実行
     if ($b == 0) { /*コマンドのステータス,成功時には「0」*/
         //実行用のinput画像を取得
-        $inputs = '';
-        //データの取得(入力，画像)　/*DBはアカウントと問題の読み込みに使われる！*/
-        $sql = 'SELECT * FROM problem_info_tb WHERE problem_id=1 AND input_output=0 AND img_or_answer_flag=0';
-        /*カラム名条件からproblem_info_tbの情報を抽出 */
-        $sth = $dbh->query($sql); //SQLの実行
-        /* queryに$sqlを渡す */
-        foreach ($sth as $row) { /*↓queryの結果は配列で返ってくるのでforeachで取り出す */
-            //            print_r($row['id'].':'.$row['URL']);
-            //            print_r("<br>");
-            $inputs = $inputs.' '.$row['URL']; //URL-画像パス名
-            /* 複数あったらURLを追加していく　*/
-        }
-        echo "\n";
+        $inputs = 'images/problem_img/group1/problem1/teacher.jpg';
+        // //データの取得(入力，画像)　/*DBはアカウントと問題の読み込みに使われる！*/
+        // $sql = 'SELECT * FROM problem_info_tb WHERE problem_id=1 AND input_output=0 AND img_or_answer_flag=0';
+        // /*カラム名条件からproblem_info_tbの情報を抽出 */
+        // $sth = $dbh->query($sql); //SQLの実行
+        // /* queryに$sqlを渡す */
+        // foreach ($sth as $row) { /*↓queryの結果は配列で返ってくるのでforeachで取り出す */
+        //     //            print_r($row['id'].':'.$row['URL']);
+        //     //            print_r("<br>");
+        //     $inputs = $inputs.' '.$row['URL']; //URL-画像パス名
+        //     /* 複数あったらURLを追加していく　*/
+        // }
+        // echo "\n";
         /* https://www.sejuku.net/blog/72118 */
 
         //echo "compile success!\n";
-        exec('./a.out'.$inputs, $a, $b); //execはターミナル、前文コンパイル分、aとbは出力結果 ''は文字列であってコンパイルの区切りではない、コンパイルの区切りは,!
+        exec('./a.out'.$inputs); //execはターミナル、前文コンパイル分、aとbは出力結果 ''は文字列であってコンパイルの区切りではない、コンパイルの区切りは,!
         //a.out のあとに文字列入れると実行するcppファイルに変数として使える
 //                print_r($inputs);
 //                print_r("<br>");
@@ -85,7 +89,7 @@
         //        }
 
         //evaluation.cppを実行
-        exec('./a.out '.$a[0].' '.$a[1], $ev, $c); //execはターミナル、''は文字列であってコンパイルの区切りではない、コンパイルの区切りは,!
+        exec('./a.out '.$a[0].' '.$a[1]); //execはターミナル、''は文字列であってコンパイルの区切りではない、コンパイルの区切りは,!
         //exec("./a.out", $ev, $c);
 //                print_r("abs:".$ev[0]); //画素値合計を表示
 
@@ -151,7 +155,7 @@
     <body>
 
         <div class="header">
-            <h1><a href="index_login.php">画像処理プログラム判定サイト</a></h1>
+            <!-- <h1><a href="index_login.php">画像処理プログラム判定サイト</a></h1>
 
             <div id="fixedBox" class="nav">
                 <ul id="itemMenu">
@@ -163,7 +167,7 @@
                 <ul id="LoginTop">
                 <li id="quickstart-sign-in"><a href="logout.php">ログアウト</a></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
         <p><br><br>＜結果＞</p>
@@ -192,21 +196,21 @@
 //            // foreach文で配列の中身を一行ずつ出力
 //?>
         <?php
-            $dbh = connectDB();
-            $user_id = $_SESSION['id'];
-            $prob_id = $_SESSION['problem_id'];
-            //DBへの接続
-            if ($dbh) {
-                //データベースへの問い合わせSQL文（文字列）
-                $sql = 'INSERT INTO `user_Answer_tb`(`user_id`) VALUES ($user_id)';
-                $sth = $dbh->query($sql); //SQLの実行
-            }
-            $dbh = null;
-            // foreach文で配列の中身を一行ずつ出力
+            // $dbh = connectDB();
+            // $user_id = $_SESSION['id'];
+            // $prob_id = $_SESSION['problem_id'];
+            // //DBへの接続
+            // if ($dbh) {
+            //     //データベースへの問い合わせSQL文（文字列）
+            //     $sql = 'INSERT INTO `user_Answer_tb`(`user_id`) VALUES ($user_id)';
+            //     $sth = $dbh->query($sql); //SQLの実行
+            // }
+            // $dbh = null;
+            // // foreach文で配列の中身を一行ずつ出力
         ?>
 
-        <div class="footer">
+        <!-- <div class="footer">
             <p>Copyright@AIT_SawanoLab</p>
-        </div>
+        </div> -->
     </body>
 </html>

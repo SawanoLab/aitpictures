@@ -23,8 +23,9 @@ int main (int argc, const char* argv[]) {
 //    img2 = cv::imread("img3.jpg", cv::IMREAD_COLOR);
 //
     
-    src_imgs = IPPJInit(argc, argv); //関数呼び出し
-    teacher_img = cv::imread("images/problem_img/group1/problem1/teacher.jpg", cv::IMREAD_COLOR); //教師画像読み込み
+    //src_imgs = IPPJInit(argc, argv); //関数呼び出し
+    src_imgs = cv::imread("images/problem_img/group1/problem1/teacher.jpg", cv::IMREAD_COLOR);
+    teacher_img = cv::imread("images/problem_img/group1/problem1/gray.jpg", cv::IMREAD_COLOR); //教師画像読み込み
     
 //    cv::namedWindow("Source1");  //ウィンドウ生成
 //    cv::moveWindow("Source1", 0, 0);  //ウィンドウ移動

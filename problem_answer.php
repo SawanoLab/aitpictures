@@ -14,26 +14,26 @@
     </head>
     <body>
         <?php
-            if(!((isset($_SESSION['login'])&&$_SESSION['login'] == 'OK'))){
-                //ログインフォームへ
-                header('Location:login.html');
-                // 終了
-                exit();
-            }
-            //接続用関数の呼び出し
-            require_once(__DIR__.'/functions.php');
-            $dbh=connectDB();
-            
-            if($dbh){
-                //データベースへの問い合わせSQL文（文字列）
-                $sql = 'SELECT * FROM problem_tb WHERE id=' . $_POST['id'] . ';';
-                $sth = $dbh->query($sql);//SQLの実行
-                //データの取得
-                $result = $sth->fetchALL(PDO::FETCH_ASSOC);
-            }
+            // if(!((isset($_SESSION['login'])&&$_SESSION['login'] == 'OK'))){
+            //     //ログインフォームへ
+            //     header('Location:login.html');
+            //     // 終了
+            //     exit();
+            // }
+            // //接続用関数の呼び出し
+            // require_once(__DIR__.'/functions.php');
+            // $dbh=connectDB();
+
+            // if($dbh){
+            //     //データベースへの問い合わせSQL文（文字列）
+            //     $sql = 'SELECT * FROM problem_tb WHERE id=' . $_POST['id'] . ';';
+            //     $sth = $dbh->query($sql);//SQLの実行
+            //     //データの取得
+            //     $result = $sth->fetchALL(PDO::FETCH_ASSOC);
+            // }
             ?>
         <div class="header">
-            <h1><a href="index_login.php">画像処理プログラム判定サイト</a></h1>
+            <!-- <h1><a href="index_login.php">画像処理プログラム判定サイト</a></h1>
             <div id="fixedBox" class="nav">
                 <ul id="itemMenu">
                 <li><a href="issue_public.php">公開問題</a></li>
@@ -44,7 +44,7 @@
                 <ul id="LoginTop">
                 <li id="quickstart-sign-in"><a href="logout.php">ログアウト</a></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <?php
 //            $dbh=connectDB();
@@ -61,13 +61,14 @@
             ?>
 
 <div class="contens">
-<!--<h3><br><br>問題1 白黒画像にしよう</h3> -->
-<!--<p>この画像を白黒画像にしよう!</p> -->
-<h3><br><br>問題<?php echo $result[0]['problemNo']; ?> <?php echo $result[0]['title']; ?></h3>
-<p><?php echo $result[0]['sentence']; ?></p>
+<h3><br><br>問題1 白黒画像にしよう</h3>
+<p>この画像を白黒画像にしよう!</p>
+
+<!-- <h3><br><br>問題<?php echo $result[0]['problemNo']; ?> <?php echo $result[0]['title']; ?></h3>
+<p><?php echo $result[0]['sentence']; ?></p> -->
 <h4>入力画像</h4>
 <p>
-<img src="images/problem_img/group1/problem1/img1.jpg"
+<img src="images/problem_img/group1/problem1/color.jpg"
 <?php
     //DBへの接続
 //    if($dbh){
@@ -86,7 +87,7 @@
 //    echo $url;
     ?>
 alt="サンプル画像" width="200" heigth="100">
-<img src="images/problem_img/group1/problem1/img2.jpg"
+<!-- <img src="images/problem_img/group1/problem1/color.jpg" -->
 <?php
 //    $dbh=connectDB();
 //    //DBへの接続
@@ -105,11 +106,11 @@ alt="サンプル画像" width="200" heigth="100">
 //    }
 //    echo "images/problem_img/group1/problem1/img1.jpg";
     ?>
-alt="サンプル画像" width="200" heigth="100" hspace="20">
-</p>
+<!-- alt="サンプル画像" width="200" heigth="100" hspace="20"> -->
+<!-- </p> -->
 <h4>出力画像</h4>
 <p>
-<img src="images/problem_img/group1/problem1/teacher.jpg"
+<img src="images/problem_img/group1/problem1/gray.jpg"
 <?php
 //    $dbh=connectDB();
 //    //DBへの接続
@@ -132,19 +133,23 @@ alt="サンプル画像" width="200" heigth="100" hspace="20">
 alt="サンプル画像" width="200" height="150">
 </p>
 <h4>ヒント</h4>
-<p>白色は(255,255,255) 黒色は(0,0,0)</p>
+<p>cv::cvtColor(sourceImage, grayImage, cv::COLOR_BGR2GRAY);</p>
+
+
 <form action="problem_result.php" method="post" name="form1" enctype="multipart/form-data">
-<h4>解答</h4>
-<textarea  cols="70" rows="20" name="text"></textarea>
-<p center>
-<input type="submit" value="採点する">
-<input type="submit" value="reset">
-</p>
+    <h4>解答</h4>
+    <textarea  cols="70" rows="20" name="text"></textarea>
+    <p>
+        <input type="submit" value="採点する">
+        <!-- <input type="submit" value="reset"> -->
+    </p>
 </form>
+
 </div>
 
-<div class="footer">
+<!-- <div class="footer">
 <p>Copyright@AIT_SawanoLab</p>
-</div>
+</div> -->
+
 </body>
 </html>

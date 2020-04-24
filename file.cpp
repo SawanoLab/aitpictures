@@ -1,79 +1,69 @@
-
-
-
-//g++ -std=c++11 dog.cpp `pkg-config --libs --cflags opencv4`
+//g++ dip01.cpp `pkg-config --cflags opencv --libs opencv`
 #include <iostream>  //入出力関連ヘッダ
 #include <opencv2/opencv.hpp>  //OpenCV関連ヘッダ
-#include <time.h>//time_t用
-#include <sstream>//ostringstream用
-#include <iomanip>//ostringstream用
-#include <vector>//ベクターサイズ取得用
-#include <string>//テキストファイル取得用
-#include <fstream>//テキストファイル出力用
+
 #include "IPPJ.hpp"
 
-//グローバル変数
-std::vector <cv::Mat> output_imgs; //動的なMat型配列
-std::vector <int> output_texts;
-
 int main (int argc, const char* argv[]) {
-    int ans1 = 160;
-    int ans2 = 200;
-
-    //入力画像の読み込み
-    std::vector <cv::Mat> src_imgs; //動的Mat型配列
-    src_imgs = IPPJInit(argc, argv); //関数呼び出し
     
-    //----------以下，画像処理本体---------
+    //①画像ファイルの読み込み
+    cv::Mat sourceImage = cv::imread("images/problem_img/group1/problem1/color.jpg", cv::IMREAD_COLOR);
+
+    if (sourceImage.data==0) {  //画像ファイルが読み込めなかった場合
+        printf("File not found\n");
+        exit(0);
+    }
+    printf("Width=%d, Height=%d\n", sourceImage.cols, sourceImage.rows);
     
     //②画像格納用インスタンスの生成
-    cv::Mat grayImage1;  //cv::Mat クラス
-    cv::Mat grayImage2;  //cv::Mat クラス
-    cv::Mat grayImage3;  //cv::Mat クラス
-    cv::Mat binImage1;  //cv::Mat クラス
-    cv::Mat binImage2;  //cv::Mat クラス
-
-//    std::vector<cv::Mat> bgrImage(3);
-//    cv::Mat binImage;
-
-    //③ウィンドウの生成と移動
-    cv::namedWindow("Source1");  //ウィンドウ生成
-    cv::moveWindow("Source1", 0, 0);  //ウィンドウ移動
-    cv::namedWindow("Source2");  //ウィンドウ生成
-    cv::moveWindow("Source2", src_imgs[0].cols, 0);  //ウィンドウ移動
-    cv::namedWindow("Source3");  //ウィンドウ生成
-    cv::moveWindow("Source3", src_imgs[0].cols+src_imgs[1].cols, 0);  //ウィンドウ移動
-    cv::namedWindow("Gray1");    //ウィンドウ生成
-    cv::moveWindow("Gray1", 0, 500);  //ウィンドウ移動
-    cv::namedWindow("Gray2");    //ウィンドウ生成
-    cv::moveWindow("Gray2", src_imgs[0].cols, 500);  //ウィンドウ移動
-    cv::namedWindow("Gray3");    //ウィンドウ生成
-    cv::moveWindow("Gray3", src_imgs[0].cols+src_imgs[1].cols, 500);  //ウィンドウ移動
-
-
-    //④画像処理
-    cv::cvtColor(src_imgs[0], grayImage1, cv::COLOR_BGR2GRAY);//変換
-    cv::cvtColor(src_imgs[1], grayImage2, cv::COLOR_BGR2GRAY);//変換
-    cv::cvtColor(src_imgs[2], grayImage3, cv::COLOR_BGR2GRAY);//変換
-
-//    cv::split(sourceImage, bgrImage);//分離
-    cv::threshold(grayImage2, binImage1, 100, 255, cv::THRESH_BINARY);
-    cv::threshold(grayImage3, binImage2, 160, 255, cv::THRESH_BINARY);
-
-
-    //⑥キー入力待ち
-//    cv::waitKey(0);
-
-//    //⑦画像の保存
-    //出力画像の取得(今は手動)
-    output_imgs.push_back(binImage1);
-    output_imgs.push_back(binImage2);
-    output_texts.push_back(ans1);
-    output_texts.push_back(ans2);
+    cv::Mat grayImage;
+    std::vector<cv::Mat> bgrImage(3); //bgrImage[0],bgrImage[1],bgrImage[2]
     
+//    int i[10];
+//    cv::Mat bgrImage[3];
+//    std::vector<int> i;
+    
+
+    
+    //③ウィンドウの生成と移動
+    // cv::namedWindow("Source"); //ウィンドウ生成
+    // cv::moveWindow("Source", 0,0);
+    // cv::namedWindow("Gray");//ウィンドウ生成
+    // cv::moveWindow("Gray", 400,0);
+    // cv::namedWindow("B");//ウィンドウ生成
+    // cv::moveWindow("B", 400,150);
+    // cv::namedWindow("G");//ウィンドウ生成
+    // cv::moveWindow("G", 400,300);
+    // cv::namedWindow("R");//ウィンドウ生成
+    // cv::moveWindow("R", 400,450);
+    
+    //④画像処理
+    cv::cvtColor(sourceImage, grayImage, cv::COLOR_BGR2GRAY); //sorceImage→grayImage(グレースケール)
+    // cv::split(sourceImage,bgrImage); //sorceImage→bgrImage[0],bgrImage[1],bgrImage[2](分離)
+    
+    //⑤ウィンドウへの画像の表示
+    cv::imshow("Source", sourceImage);
+    cv::imshow("Gray", grayImage);
+    // cv::imshow("B", bgrImage[0]);
+    // cv::imshow("G", bgrImage[1]);
+    // cv::imshow("R", bgrImage[2]);
+    
+    //⑥キー入力待ち
+    cv::waitKey(0);
+    
+
+
+    //    //⑦画像の保存
+    //出力画像の取得(今は手動)
+    cv::Mat output_imgs;
+    output_imgs.push_back(grayImage);
     
     IPPJOutputImg(output_imgs);
-    IPPJOutputText(output_texts);
+
+
+    // //⑦画像の保存
+    // cv::imwrite("gray.jpg", grayImage); //grayImageを"gray.jpg"ファイルとして保存
+
     
     return 0;
 }
