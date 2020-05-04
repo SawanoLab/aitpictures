@@ -1,5 +1,5 @@
 <?php
-define('DSN','mysql:host=localhost;dbname=ipc_db');
-define('DB_USER','ipc_user');
-define('DB_PASSWORD','sawano-lab');
- ?>
+
+define('DSN', 'mysql:host=localhost;dbname=aitpicture_test2');
+define('DB_USER', 'ipc_user');
+define('DB_PASSWORD', 'sawano-lab');
