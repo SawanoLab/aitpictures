@@ -42,7 +42,7 @@
         $sql = 'CREATE TABLE IF NOT EXISTS `image_tb` ( `id` INT NOT NULL AUTO_INCREMENT,
         `problem_id` INT NOT NULL, 
         `img_path` INT NOT NULL,
-        `problem_answer` INT NOT NULL,
+        `input_output` INT NOT NULL,
         `example_judgement` INT NOT NULL,
         PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8';
         $dbh->exec($sql); //SQLの実行
@@ -50,18 +50,18 @@
 
         //---------------------------------------------------------------------------
         //標準入力の作成
-        $sql = 'CREATE TABLE IF NOT EXISTS `input_value_tb` ( `id` INT NOT NULL AUTO_INCREMENT,
-        `problem_id` INT NOT NULL, 
-        `input_value` INT NOT NULL,
-        PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8';
-        $dbh->exec($sql); //SQLの実行
+        // $sql = 'CREATE TABLE IF NOT EXISTS `input_value_tb` ( `id` INT NOT NULL AUTO_INCREMENT,
+        // `problem_id` INT NOT NULL,
+        // `input_value` INT NOT NULL,
+        // PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8';
+        // $dbh->exec($sql); //SQLの実行
         //---------------------------------------------------------------------------
 
         //---------------------------------------------------------------------------
         //標準出力の作成
-        $sql = 'CREATE TABLE IF NOT EXISTS `output_value_tb` ( `id` INT NOT NULL AUTO_INCREMENT,
+        $sql = 'CREATE TABLE IF NOT EXISTS `answer_value_tb` ( `id` INT NOT NULL AUTO_INCREMENT,
         `problem_id` INT NOT NULL, 
-        `output_value` INT NOT NULL,
+        `answer_value` INT NOT NULL,
         PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8';
         $dbh->exec($sql); //SQLの実行
         //---------------------------------------------------------------------------
