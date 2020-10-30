@@ -3,8 +3,8 @@ html, body {
     margin: 0;
     padding: 0;
 }
-header{
-	background: #a0a0a0;
+#header{
+	background: #FFFFFF;
 }
 .fixed {
     position: fixed;
@@ -44,7 +44,7 @@ header{
   border-right: 1px solid #AAA;
 }
 #itemMenu li a:hover {
-	background-color:#eee; 	/*リンクにマウスが乗ったら背景色を変更する*/
+	background-color:#000066; 	/*リンクにマウスが乗ったら背景色を変更する*/
 }
 
 #LoginTop{
@@ -78,9 +78,9 @@ header{
   border-radius: 6px 6px 6px 6px;
 }
 #LoginTop li a:hover {
-	background-color:#eee;	/*リンクにマウスが乗ったら背景色を変更する*/
+	background-color:#000066; 	/*リンクにマウスが乗ったら背景色を変更する*/
 }
 
 h1 a:hover{
-	color:#000066; 	/*リンクにマウスが乗ったら背景色を変更する*/
+	color:#0000BB; 	/*リンクにマウスが乗ったら背景色を変更する*/
 }

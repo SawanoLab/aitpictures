@@ -1,7 +1,6 @@
 table{
   border-collapse: collapse;
   border-spacing: 0;
-  width: 70%;
 }
 .group{
   float: left;
@@ -25,13 +24,10 @@ table tr{
   border: solid 1px #eee;
   cursor: pointer;
 }
-.problem_tr:hover{
-  background: #fff;/*背景色*/
-}
 
-table tr:hover{
+/* table tr:hover{
   background-color: #d4f0fd;
-}
+} */
 
  table th,table td {
   text-align: center;
@@ -41,4 +37,18 @@ table tr:hover{
 
 h2{
 margin-left:10px;
+}
+
+/* problem_list.php */
+
+/* チェックマーク自身（参考：https://beeyanblog.com/css-make-checkmark/） */
+.problem_check {
+  content: '';
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid #25AF01;
+  border-bottom: 2px solid #25AF01;
+  transform: rotate(-45deg);
+
+  margin: auto; /* text-alignじゃないよ（参考：https://saruwakakun.com/html-css/basic/centering） */ 
 }

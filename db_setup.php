@@ -22,6 +22,8 @@
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
         if (0 < count($result)) {
             //データベース構築済み
+            echo 'DBはすでに構築されています．';
+
             return;
         }
 
@@ -41,9 +43,9 @@
         //画像テーブルの作成
         $sql = 'CREATE TABLE IF NOT EXISTS `image_tb` ( `id` INT NOT NULL AUTO_INCREMENT,
         `problem_id` INT NOT NULL, 
-        `img_path` INT NOT NULL,
-        `input_output` INT NOT NULL,
+        `img_path` VARCHAR(500) NOT NULL,
         `example_judgement` INT NOT NULL,
+        `input_output` INT NOT NULL,
         PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8';
         $dbh->exec($sql); //SQLの実行
         //---------------------------------------------------------------------------
@@ -65,6 +67,31 @@
         PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8';
         $dbh->exec($sql); //SQLの実行
         //---------------------------------------------------------------------------
+
+        //---------------------------------------------------------------------------
+        //アカウント機能の作成
+        $sql = 'CREATE TABLE IF NOT EXISTS `user_tb` ( `id` INT NOT NULL AUTO_INCREMENT,
+        `login_name` VARCHAR(30) NOT NULL, 
+        `login_password` VARCHAR(30) NOT NULL,
+        `display_name` VARCHAR(100) NOT NULL,
+        `create_on` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+        `last_login` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8';
+        $dbh->exec($sql); //SQLの実行
+        //---------------------------------------------------------------------------
+
+        //---------------------------------------------------------------------------
+        //ユーザ解答履歴の作成
+        $sql = 'CREATE TABLE IF NOT EXISTS `answer_history_tb` ( `id` INT NOT NULL AUTO_INCREMENT,
+        `user_id` INT NOT NULL, 
+        `problem_id` INT NOT NULL,
+        `right_wrong` INT NOT NULL,
+        `answer_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+        PRIMARY KEY (`id`)) ENGINE = InnoDB DEFAULT CHARSET=utf8';
+        $dbh->exec($sql); //SQLの実行
+        //---------------------------------------------------------------------------
+
+        echo 'DBを構築しました．';
     }
 
     // Webブラウザにこれから表示するものがUTF-8で書かれたHTMLであることを伝える
@@ -76,7 +103,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>DB作成完了</title>
+        <title>DB作成結果</title>
     </head>
     <body>
         <!-- ここではHTMLを書く以外のことは一切しない -->

@@ -1,0 +1,40 @@
+body,p,input{
+    margin: 0px;
+}
+
+#check_group_id{
+    margin-left: 180px;
+    margin-top: 40px;
+    
+}
+
+.check_group{
+    font-size: 30px;
+}
+
+.explanation{
+    margin: 20px 0px;
+}
+
+#submit input{
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    background: #4eb4c2;
+    box-shadow: 0px 8px 6px #e3e3e3;
+    border: solid #f5fdff 4px;
+}
+
+#submit input:hover{
+    background: #37a4bf;
+}
+
+a .problem_create{
+    margin: 0px 20px;
+}

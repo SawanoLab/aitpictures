@@ -1,0 +1,14 @@
+.item{
+  margin: 80px auto;
+	text-align: center;
+}
+.item ul{
+  padding-left: 0;
+	list-style: none;
+	display: inline-block;
+  font-size: 35px;
+}
+.item ul li {
+	text-align: left;
+  margin-bottom: 50px;
+}

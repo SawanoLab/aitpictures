@@ -1,0 +1,36 @@
+.contents{
+	background-color: #fff;
+/*	background-image: url("../images/top_gray.png") ;*/
+	background-repeat:no-repeat;
+	background-postion:  center; 
+	background-size: cover;
+	
+	
+	color: #101010;
+    text-align: center;
+    padding:20px;
+	line-height: 2;
+}
+
+.main h2{
+    text-align: center;
+    padding: 80px 0px 0px 0px;
+	margin: 0px;
+	color: #005bca;
+  text-shadow:1px 1px 2px #FFF, -1px -1px 2px #FFF,
+              -1px 1px 2px #FFF, 1px -1px 2px #FFF,
+              0px 1px 2px #FFF,  0-1px 2px #FFF,
+              -1px 0 2px #FFF, 1px 0 2px #FFF;
+}
+
+.contents p{
+	color: #101010;
+/*
+  text-shadow:1px 1px 2px #888, -1px -1px 2px #888,
+              -1px 1px 2px #888, 1px -1px 2px #888,
+              0px 1px 2px #888,  0-1px 2px #888,
+              -1px 0 2px #888, 1px 0 2px #888;
+*/
+	text-align: center;
+	padding:0;
+}

@@ -16,3 +16,20 @@ function connectDB()
         ecit;
     }
 }
+
+// function mkDir($path, $dir, $problem_id)
+// $path1 = './images/problem/';
+//     // 作成するディレクトリ名
+//     $dir_name1 = 'problem_'.$problem_id;
+//     $dir = $dir.$problem_id;
+//     // 親ディレクトリが書き込み可能か、および同じ名前のディレクトリが存在しないか確認
+//     if (is_writable($path) && !file_exists($path.$dir)) {
+//         // ディレクトリを作成
+//         if (mkdir($path.$dir)) {
+//             echo '「problem_問題ID」ディレクトリを作成しました。<br>';
+//         } else {
+//             echo '「problem_問題ID」ディレクトリの作成に失敗しました。<br>';
+//         }
+//     } else {
+//         echo '「problem_問題ID」は親ディレクトリが書き込みを許可していないか、すでに同名のディレクトリがあり作成できませんでした。<br>';
+//     }
