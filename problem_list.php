@@ -3,12 +3,12 @@
   session_start();
 
   // ログイン確認　最終的にチェック外す！
-  // if (!((isset($_SESSION['login']) && $_SESSION['login'] == 'OK'))) {
-  //     //ログインフォームへ
-  //     header('Location:index.php');
-  //     // 終了
-  //     // exit();
-  // }
+  if (!((isset($_SESSION['login']) && $_SESSION['login'] == 'OK'))) {
+      //ログインフォームへ
+      header('Location:index.php');
+      // 終了
+      // exit();
+  }
 
         //接続用関数の呼び出し
         require_once __DIR__.'/functions.php';

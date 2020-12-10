@@ -65,7 +65,7 @@
             // foreach文で配列の中身を一行ずつ出力（参考：https://www.flatflag.nir87.com/select-932）
             foreach ($sth as $row) {
                 // データベースのフィールド名で出力
-                echo $row['title'];
+                echo '<br>'.$row['title'];
             }
         ?>
         </h3>

@@ -27,7 +27,6 @@
     	}
     }
     </script>
-
 </head>
 <body>
   <div id="form">

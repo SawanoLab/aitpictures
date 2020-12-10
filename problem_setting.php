@@ -3,12 +3,12 @@
 session_start(); //セッション変数　他のphpファイルで使うため
 
   // ログイン確認　最終的にチェック外す！
-  // if (!((isset($_SESSION['login']) && $_SESSION['login'] == 'OK'))) {
-  //     //ログインフォームへ
-  //     header('Location:index.php');
-  //     // 終了
-  //   // exit();
-  // }
+  if (!((isset($_SESSION['login']) && $_SESSION['login'] == 'OK'))) {
+      //ログインフォームへ
+      header('Location:index.php');
+      // 終了
+    // exit();
+  }
 ?>
 
 <html>

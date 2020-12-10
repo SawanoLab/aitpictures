@@ -49,6 +49,7 @@ session_start(); //セッション変数　他のphpファイルで使うため
     //problem_tbにテキストを保存する
     //受け取ったものを変数に入れる
     $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
+    echo '<br>';
     echo '題名は　'.$title.'<br>'; //確認用
     $sentence = htmlspecialchars($_POST['sentence'], ENT_QUOTES);
     echo '問題文は　'.$sentence.'<br>'; //確認用

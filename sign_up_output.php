@@ -43,27 +43,27 @@ if (count($result) == 1) {//配列数が唯一の場合
     } elseif ((isset($_POST['user']) && $_POST['pass'] == '' && isset($_POST['pass']))) {
     } elseif ($dbh) {
         //新しく登録する
-        $sql_1 = 'INSERT INTO user_tb(login_name, login_password, display_name) VALUES("'.$user.'","'.$pass.'","'.$name.'")';
-        $sth_1 = $dbh->query($sql_1); //SQLの実行
+        $sql = 'INSERT INTO user_tb(login_name, login_password, display_name) VALUES("'.$user.'","'.$pass.'","'.$name.'")';
+        $sth = $dbh->query($sql); //SQLの実行
     }
 }
-$shh = null; //データの消去
+$sth = null; //データの消去
 $dbh = null; //DBを閉じる
+
 //移動
 if ($login == 'OK') { //ログインできてしまったら
     header('Location:sign_up_re.php'); //ユーザIDが使われていることにして登録し直す
-} else {
 }
- ?>
+?>
 
- <html>
- <head>
-   <meta http-equiv="content-type" content="text/html;" charset="utf-8">
-   <title>登録ページ</title>
- </head>
- <body>
-   登録しました。ログインしてください.
-   <a href="login.php">ログインページへ</a>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;" charset="utf-8">
+  <title>登録ページ</title>
+</head>
+<body>
+  登録しました。ログインしてください.
+  <a href="login.php">ログインページへ</a>
 
- </body>
- </html>
+</body>
+</html>
