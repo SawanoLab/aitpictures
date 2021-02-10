@@ -10,7 +10,7 @@
 #include <opencv2/opencv.hpp>
 
 //画像ファイル（小さめが良い）
-#define FILE_NAME "/Applications/MAMP/htdocs/aitpictures_20/data_file/problem_program/problem_1/image/flower.jpg"
+#define FILE_NAME "/Applications/MAMP/htdocs/aitpictures_20/data_file/problem_program/problem_1/image/xmas.jpg"
 #define WINDOW_NAME_INPUT "input"
 #define WINDOW_NAME_OUTPUT "output"
 #define SAVE_FILE_NAME1 "result.jpg"

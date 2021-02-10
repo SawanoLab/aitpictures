@@ -9,11 +9,13 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 
-#define FILE_NAME "/Applications/MAMP/htdocs/aitpictures_20/data_file/problem_program/problem_5/image/skytree.jpg"
+// #define FILE_NAME "/Applications/MAMP/htdocs/aitpictures_20/data_file/problem_program/problem_5/image/skytree.jpg"
+#define FILE_NAME "/Users/x17070xx/Desktop/test/image.jpg"
 #define WINDOW_NAME_INPUT "input"
 #define WINDOW_NAME_OUTPUT "output"
 #define COLOR_NUM 256
-#define SAVE_FILE_NAME1 "result.jpg"
+// #define SAVE_FILE_NAME1 "result.jpg"
+#define SAVE_FILE_NAME1 "/Users/x17070xx/Desktop/test/result.jpg"
 
 int main(int argc, const char * argv[]) {
     int x, y, i;
